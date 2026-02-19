@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DM Plant Calculator</title>
+<style>
+body{font-family:Arial;text-align:center;background:linear-gradient(to right,#1f4037,#99f2c8);margin:0;padding:20px;}
+.card{background:white;padding:20px;border-radius:15px;max-width:400px;margin:auto;box-shadow:0 10px 25px rgba(0,0,0,0.3);}
+input{width:90%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ccc;}
+button{width:100%;padding:12px;background:#1f4037;color:white;border:none;border-radius:10px;font-size:16px;}
+.result{margin-top:15px;font-weight:bold;font-size:18px;}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h2>DM Chemical Calculator</h2>
+
+<input type="number" id="flow" placeholder="Flow (L/hr)">
+<input type="number" id="time" placeholder="Time (hr)">
+<input type="number" id="dose" placeholder="Dose (%)">
+
+<button onclick="calc()">Calculate</button>
+
+<div class="result" id="result"></div>
+</div>
+
+<script>
+function calc(){
+let f=parseFloat(document.getElementById("flow").value);
+let t=parseFloat(document.getElementById("time").value);
+let d=parseFloat(document.getElementById("dose").value);
+
+if(isNaN(f)||isNaN(t)||isNaN(d)){
+document.getElementById("result").innerHTML="⚠ Enter all values properly";
+return;
+}
+
+let total=(f*t*d)/100;
+
+document.getElementById("result").innerHTML=
+"Total Chemical Used: "+total.toFixed(2)+" Liters";
+}
+</script>
+
+</body>
+</html>
